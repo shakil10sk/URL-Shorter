@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UrlShortenerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/short/url', [UrlShortenerController::class, 'convertToShortUrl']);
+Route::get('/redirect/short/url/{shortUrl}', [UrlShortenerController::class, 'redirectToOriginalUrl']);
